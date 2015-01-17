@@ -8,8 +8,19 @@
 
 <body>
 
-<iframe width="640" height="360" src="http://www.youtube.com/embed/CH1XGdu-hzQ?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+<script type="text/javascript" src="swfobject/swfobject.js"></script>    
+  <div id="ytapiplayer">
+    You need Flash player 8+ and JavaScript enabled to view this video.
+  </div>
 
+  <script type="text/javascript">
+
+    var params = { allowScriptAccess: "always" };
+    var atts = { id: "myytplayer" };
+    swfobject.embedSWF("http://www.youtube.com/v/CH1XGdu-hzQ?enablejsapi=1&playerapiid=ytplayer&version=3",
+                       "ytapiplayer", "425", "356", "8", null, null, params, atts);
+
+  </script>
 </body>
 
 </html>

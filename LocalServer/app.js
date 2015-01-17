@@ -1,7 +1,7 @@
 ﻿/**** our stuff ****/
 
 function buttonPressed(emotion) {
-	var timestamp = $('#video_container').find('video').get(0).currentTime;
+	var timestamp = truncate($('#video_container').find('video').get(0).currentTime);
 	alert(emotion + ' ' + timestamp);
 	var MobileServiceClient = WindowsAzure.MobileServiceClient,
 		client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
@@ -10,6 +10,9 @@ function buttonPressed(emotion) {
 	todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}).then(refreshTodoItems); 
 }
 
+function truncate(n) {
+  return n | 0; // bitwise operators convert operands to 32-bit integers
+}
 /****** AZURE *******/
 
 $(function() {

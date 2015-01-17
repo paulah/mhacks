@@ -31,16 +31,13 @@ $(function() {
 		var query = todoItemTable;
 
 		query.read().then(function(todoItems) {
-			/* listItems = $.map(todoItems, function(item) {
-				return $('<li>')
-					.attr('data-todoitem-id', item.id)
-					.append($('<button class="item-delete">Delete</button>'))
-					.append($('<input type="checkbox" class="item-complete">').prop('checked', item.complete))
-					.append($('<div>').append($('<input class="item-text">').val(item.text)));
+			var arr = [];
+			listItems = $.map(todoItems, function(item) {
+				arr.push([item.time, item.emotion, item.number]);
+				return arr;
 			});
-				   
-			$('#todo-items').empty().append(listItems).toggle(listItems.length > 0);
-			$('#summary').html('<strong>' + todoItems.length + '</strong> item(s)');*/
+
+			alert(arr);
 		});
 	}
 

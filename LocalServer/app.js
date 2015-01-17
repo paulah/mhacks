@@ -26,21 +26,55 @@ $(function() {
         todoItemTable = client.getTable('TimestampTable');
 
     //// TODO: Uncomment the following method. 
-    function refreshTodoItems() {
-
+    
+    	var arr = [];
 		var query = todoItemTable;
-
+		
 		query.take(500).read().then(function(todoItems) {
-			var arr = [];
+			
 			listItems = $.map(todoItems, function(item) {
 				arr.push([item.time, item.emotion, item.number]);
 				return arr;
 			});
-
-			alert(arr.length);
+			arr = listItems;
 		});
+
+		function refreshTodoItems() {
+		}
+	
+ 
+
+	function getGraphStats() {
+		//var currentTime = truncate($('#video_container').find('video').get(0).currentTime);
+		alert(arr);
+		var currentTime = 5;
+		var arrayLength = arr.length;
+		var map = {};
+		map['exclamation'] = 0;
+		map['happy'] = 0;
+		map['sad'] = 0;
+		map['question'] = 0;
+		for(var i=0; i< arrayLength; i++) {
+			var element = arr[i];
+			//var time = element[0];
+			var time = element[0];
+			if((currentTime - 5) <= time) {
+				console.log('found element');
+				if(element[1] in map)
+					map[element[1]] = map[element[1]]+element[2];
+				else
+					map[element[1]] = element[2];
+				console.log('things added!')
+			}
+		}
+		console.log(map);
+		return map;
 	}
 
+	setTimeout(function () {
+        var my_map = getGraphStats();
+        alert(my_map['exclamation'] + ' should be 1');
+    }, 5000);
     /*function getTodoItemId(formElement) {
         return $(formElement).closest('li').attr('data-todoitem-id');
     }*/

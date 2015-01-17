@@ -7,6 +7,12 @@
 <script src="app.js"></script>
 
 <script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="bargraph.js"></script>
+
+
+
 
 <!-- For the graphs -->
 <script src='https://code.highcharts.com/highcharts.js'></script>
@@ -20,13 +26,20 @@
       <p>Your user agent does not support the HTML5 Video element.</p>
     </video>
 </div>
+
+
+
 <div id = "aligned"><a href="javascript:void(0)" class="button" onclick="buttonPressed('exclamation')">!</a></div>
 <div id = "aligned"><a href="javascript:void(0)" class = "button" onclick="buttonPressed('question')"> ? </a></div>
 <div id = "aligned"><a href="javascript:void(0)" class = "button2" onclick="buttonPressed('sad')"> :( </a></div>
 <div id = "aligned"><a href="javascript:void(0)" class = "button2" onclick="buttonPressed('happy')"> :D </a></div>
 
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
 <div id = "clear"> </div>
 
+
 <div id='todo-items'></div>
+
 <br>
 </html>

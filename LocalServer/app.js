@@ -1,5 +1,4 @@
 ﻿/**** our stuff ****/
-
 function buttonPressed(emotion) {
 	var timestamp = truncate($('#video_container').find('video').get(0).currentTime);
 	alert(emotion + ' ' + timestamp);
@@ -9,6 +8,7 @@ function buttonPressed(emotion) {
         
 	todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}).then(refreshTodoItems); 
 }
+
 
 function truncate(n) {
   return n | 0; // bitwise operators convert operands to 32-bit integers
@@ -30,14 +30,14 @@ $(function() {
 
 		var query = todoItemTable;
 
-		query.read().then(function(todoItems) {
+		query.take(500).read().then(function(todoItems) {
 			var arr = [];
 			listItems = $.map(todoItems, function(item) {
 				arr.push([item.time, item.emotion, item.number]);
 				return arr;
 			});
 
-			alert(arr);
+			alert(arr.length);
 		});
 	}
 

@@ -1,12 +1,20 @@
 $(function () {
 
+    var likeCount = 5;
+    var dislikeCount = 6;
+    var questionCount = 7;
+    var surpirseCount = 8;
+
+
     $('#container').highcharts({
+
+        
 
         chart: {
             type: 'column'
         },
         title: {
-            text: 'graph title'
+            text: 'graph'
         },
         xAxis: {
             categories: [
@@ -35,19 +43,19 @@ $(function () {
         },
         series: [{
             name: ':)',
-            data: [12]
+            data: [likeCount]
 
         }, {
             name: ':(',
-            data: [18]
+            data: [dislikeCount]
 
         }, {
             name: '?',
-            data: [15]
+            data: [questionCount]
 
         }, {
             name: '!',
-            data: [16]
+            data: [surpirseCount]
 
         }]
     });

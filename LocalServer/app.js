@@ -1,4 +1,15 @@
-﻿
+﻿/**** our stuff ****/
+
+function buttonPressed(emotion) {
+	var timestamp = $('#video_container').find('video').get(0).currentTime;
+	alert(emotion + ' ' + timestamp);
+	var MobileServiceClient = WindowsAzure.MobileServiceClient,
+		client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
+        todoItemTable = client.getTable('TimestampTable');
+        
+	todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}).then(refreshTodoItems); 
+}
+
 /****** AZURE *******/
 
 $(function() {
@@ -69,10 +80,3 @@ $(function() {
     refreshTodoItems();
 });
 
-/**** our stuff ****/
-
-function buttonPressed(emotion) {
-	var timestamp = $('#video_container').find('video').get(0).currentTime;
-	alert(emotion + ' ' + timestamp);
-	todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}); /* .then(refreshTodoItems); */
-}

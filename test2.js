@@ -6,3 +6,6 @@ $('#currentTime').html($('#video_container').find('video').get(0).currentTime);
 $('#totalTime').html($('#video_container').find('video').get(0).duration);    
 },500)
 
+function buttonPressed(emotion) {
+	alert(emotion);
+}

@@ -20,7 +20,19 @@
     swfobject.embedSWF("http://www.youtube.com/v/CH1XGdu-hzQ?enablejsapi=1&playerapiid=ytplayer&version=3",
                        "ytapiplayer", "425", "356", "8", null, null, params, atts);
 
+
+
+
+
+    var clicks = 0;
+    function onClick() {
+    	clicks += 1;
+    	document.getElementById("clicks").innerHTML = clicks;
+    };
   </script>
+  <button type = "button" onClick="onClick()">Click me</button>
+  <p>Clicks: <a id="clicks">0</a></p>
+
 </body>
 
 </html>

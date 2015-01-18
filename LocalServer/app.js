@@ -27,6 +27,35 @@ function buttonPressed(emotion) {
 		todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}).then(refreshTodoItems); 
 }
 
+//Outputting CSV file
+function dlButtonPressed() {
+    var MobileServiceClient = WindowsAzure.MobileServiceClient,
+        client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
+        todoItemTable = client.getTable('TimestampTable');
+
+    var arr = [];
+    var query = todoItemTable;
+    
+    query.take(500).read().then(function(todoItems) {
+        
+        listItems = $.map(todoItems, function(item) {
+            arr.push([item.time, item.emotion, item.number]);
+            return arr;
+        });
+        console.log(arr);
+        var csvContent = "data:test/csv;charset=utf-8,";
+        arr.forEach(function(infoArray, index){
+        dataString = infoArray.join(",");
+        csvContent += dataString+ "\n";
+        });
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href",encodedUri);
+        link.setAttribute("download", "Data.csv");
+        link.click();
+    });
+    
+}
 
 function truncate(n) {
   return n | 0; // bitwise operators convert operands to 32-bit integers
@@ -66,18 +95,6 @@ $(function() {
 		//arr = listItems;
         
 	});
-
-    //Outputting CSV file
-    var csvContent = "data:test/csv;charset=utf-8,";
-    arr.forEach(function(infoArray, index){
-        dataString = infoArray.join(",");
-        csvContent += index < infoArray.length ? dataString+ "\n" : dataString;
-    });
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href",encodedUri);
-    link.setAttribute("download", "Data.csv");
-    link.click();
 
 	function refreshTodoItems() {
 	}

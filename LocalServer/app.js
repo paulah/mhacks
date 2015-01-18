@@ -31,6 +31,12 @@ function buttonPressed(emotion) {
 function truncate(n) {
   return n | 0; // bitwise operators convert operands to 32-bit integers
 }
+
+function getTimeStamp()
+{
+    return truncate($('#video_container').find('video').get(0).currentTime);
+}
+
 /****** AZURE *******/
 
 $(function() {
@@ -66,7 +72,7 @@ $(function() {
 
 	function getGraphStats() {
 		//var currentTime = truncate($('#video_container').find('video').get(0).currentTime);
-		var currentTime = 5;
+		var currentTime = getTimeStamp();
 		var arrayLength = arr.length;
 		var map = {};
 		map['exclamation'] = 0;
@@ -221,7 +227,7 @@ $(function() {
         });
 
 		}
-    }, 1000);
+    }, 5000);
 
     /*function getTodoItemId(formElement) {
         return $(formElement).closest('li').attr('data-todoitem-id');
@@ -260,81 +266,5 @@ $(function() {
 	
     // On initial load, start by fetching the current data
     refreshTodoItems();
-
-    //loop redraw
-    /*var tracker = 0;
-    while(1)
-    {   
-        timestamp = truncate($('#video_container').find('video').get(0).currentTime);
-        if(timestamp != tracker)
-        {
-            var callMap = getGraphStats();
-            var likeCount = callMap['happy'];
-            var dislikeCount = callMap['sad'];
-            var questionCount = callMap['question'];
-            var surpirseCount = callMap['exclamation'];
-
-
-            $('#container').highcharts({
-
-                
-
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'graph'
-                },
-                xAxis: {
-                    categories: [
-                        'current second',
-                    ]
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Clicks'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} clicks</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series: [{
-                    name: ':)',
-                    data: [likeCount]
-
-                }, {
-                    name: ':(',
-                    data: [dislikeCount]
-
-                }, {
-                    name: '?',
-                    data: [questionCount]
-
-                }, {
-                    name: '!',
-                    data: [surpirseCount]
-
-                }]
-            });
-        }
-        else
-        {
-            console.log('Derp derp derp derp');
-        }
-        
-
-    }*/
 });
 

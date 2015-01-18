@@ -34,8 +34,10 @@ function truncate(n) {
 /****** AZURE *******/
 
 $(function() {
-
-	//// Configure the MobileServiceClient to communicate with your mobile service by
+    
+    var timestamp = truncate($('#video_container').find('video').get(0).currentTime);
+	var totalDuration = truncate($('#video_container').find('video').get(0).duration);
+    //// Configure the MobileServiceClient to communicate with your mobile service by
     //// uncommenting the following code and replacing AppUrl & AppKey with values from  
     //// your mobile service, which are obtained from the Windows Azure Management Portal.
 	//// Do this after you add a reference to the Mobile Services client to your project.
@@ -153,11 +155,68 @@ $(function() {
 
 
 
+	setInterval(function () {
+        var callMap = getGraphStats();
+        var likeCount = callMap['happy'];
+        var dislikeCount = callMap['sad'];
+        var questionCount = callMap['question'];
+        var surpirseCount = callMap['exclamation'];
 
 
-	setTimeout(function () {
-        var my_map = getGraphStats();
-    }, 5000);
+        $('#container').highcharts({
+
+            
+
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'graph'
+            },
+            xAxis: {
+                categories: [
+                    'current second',
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Clicks'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} clicks</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: ':)',
+                data: [likeCount]
+
+            }, {
+                name: ':(',
+                data: [dislikeCount]
+
+            }, {
+                name: '?',
+                data: [questionCount]
+
+            }, {
+                name: '!',
+                data: [surpirseCount]
+
+            }]
+        });
+    }, 1000);
 
     /*function getTodoItemId(formElement) {
         return $(formElement).closest('li').attr('data-todoitem-id');
@@ -196,5 +255,81 @@ $(function() {
 	
     // On initial load, start by fetching the current data
     refreshTodoItems();
+
+    //loop redraw
+    /*var tracker = 0;
+    while(1)
+    {   
+        timestamp = truncate($('#video_container').find('video').get(0).currentTime);
+        if(timestamp != tracker)
+        {
+            var callMap = getGraphStats();
+            var likeCount = callMap['happy'];
+            var dislikeCount = callMap['sad'];
+            var questionCount = callMap['question'];
+            var surpirseCount = callMap['exclamation'];
+
+
+            $('#container').highcharts({
+
+                
+
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'graph'
+                },
+                xAxis: {
+                    categories: [
+                        'current second',
+                    ]
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Clicks'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} clicks</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: ':)',
+                    data: [likeCount]
+
+                }, {
+                    name: ':(',
+                    data: [dislikeCount]
+
+                }, {
+                    name: '?',
+                    data: [questionCount]
+
+                }, {
+                    name: '!',
+                    data: [surpirseCount]
+
+                }]
+            });
+        }
+        else
+        {
+            console.log('Derp derp derp derp');
+        }
+        
+
+    }*/
 });
 

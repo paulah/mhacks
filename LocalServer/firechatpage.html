@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+
+    <!-- jQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+
+    <!-- Firebase -->
+    <script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
+
+    <!-- Firechat -->
+    <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
+    <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+  </head>
+  <body>
+    <script>
+    // Create a new Firebase reference, and a new instance of the Login client
+    var chatRef = new Firebase('https://blinding-torch-2928.firebaseio.com/chat');
+
+    function login() {
+      chatRef.authAnonymously(function(error, authData) {
+        if (error) {
+          console.log("Login Failed!",error);
+        } else {
+          console.log("Authenticated successfully with payload:", authData);
+        }
+
+      }, {
+        remember: "sessionOnly"
+      });
+    }
+
+    chatRef.onAuth(function(authData) {
+      // Once authenticated, instantiate Firechat with our user id and user name
+      if (authData) {
+        initChat(authData);
+      }
+    });
+    </script>
+
+    <a href='#' onclick='login();'>Login as Anon</a>
+
+    <script>
+    function initChat(authData) {
+      var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
+      chat.setUser(authData.uid, authData[authData.provider].displayName);
+    }
+    </script>
+
+    <div id='firechat-wrapper'></div>
+  </body>
+</html>

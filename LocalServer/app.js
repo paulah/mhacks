@@ -105,8 +105,7 @@ $(function() {
 
 
     $('#container').highcharts({
-
-        
+        colors: ['#ff2500', '#115eb7', '#666666', '#01f61e'],
 
         chart: {
             type: 'column'
@@ -172,8 +171,7 @@ $(function() {
 
 
         $('#container').highcharts({
-
-            
+            colors: ['#ff2500', '#115eb7', '#666666', '#01f61e'],
 
             chart: {
                 type: 'column'

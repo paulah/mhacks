@@ -1,116 +1,78 @@
 ﻿/* Button Styles */
-
-.button {
-    
-    /*Step 2: Basic Button Styles*/
+.Button {
     display: block;
-    height: 80px;
-    width: 80px;
+    height: 125px;
+    width: 125px;
     background: #65A954;
-    border: 2px solid rgba(33, 68, 72, 0.59);
-    padding: 0px;
-    
-    /*Step 3: Text Styles*/
+
     color: rgba(0, 0, 0, 0.55);
     text-align: center;
+    position:relative;
+    margin: 0px auto 0px auto; 
+
     font: bold 3.2em/80px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
     
-    /*Step 4: Fancy CSS3 Styles*/
-    background: -webkit-linear-gradient(top, #65A954, #508542);
-    background: -moz-linear-gradient(top, #65A954, #508542);
-    background: -o-linear-gradient(top, #65A954, #508542);
-    background: -ms-linear-gradient(top, #65A954, #508542);
-    background: linear-gradient(top, #65A954, #508542);
-    
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    
-    -webkit-box-shadow: 0 8px 0 #274221;
-    -moz-box-shadow: 0 8px 0 #274221;
-    box-shadow: 0 8px 0 #274221;
-    
-    text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
-    
+    -webkit-border-radius: 62px;
+    -khtml-border-radius: 62px;
+    -moz-border-radius: 62px;
+    border-radius: 62px;
+
+    -webkit-box-shadow: 0 8px 0 #000000;
+    -moz-box-shadow: 0 8px 0 #000000;
+    box-shadow: 0 8px 0 #000000;
+
+    padding: 0px;
 }
 
 /*Step 3: Link Styles*/
-a.button {
+.Button a {
     text-decoration: none;
 }
 
 /*Step 5: Hover Styles*/
-a.button:active {
-    background: #3d7a80;
-    background: -webkit-linear-gradient(top, #65A954, #416f36);
-    background: -moz-linear-gradient(top, #65A954, #416f36);
-    background: -o-linear-gradient(top, #65A954, #416f36);
-    background: -ms-linear-gradient(top, #65A954, #416f36);
-    background: linear-gradient(top, #65A954, #416f36);
+.Button:hover {
+    vertical-align: top;
+    padding-top: 1px;
 }
 
-/* @end */
-
-/* Button Styles */
-
-.button2 {
-    
-    /*Step 2: Basic Button Styles*/
-    display: block;
-    height: 80px;
-    width: 80px;
-    background: #eeeeee;
-    border: 2px solid rgba(33, 68, 72, 0.59);
-    padding: 0px;
-    
-    /*Step 3: Text Styles*/
-    color: rgba(0, 0, 0, 0.55);
-    text-align: center;
-    font: bold 3.2em/80px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-    
-    /*Step 4: Fancy CSS3 Styles*/
-    background: -webkit-linear-gradient(top, #eeeeee, #888888);
-    background: -moz-linear-gradient(top, #eeeeee, #888888);
-    background: -o-linear-gradient(top, #eeeeee, #888888);
-    background: -ms-linear-gradient(top, #eeeeee, #888888);
-    background: linear-gradient(top, #eeeeee, #888888);
-    
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    
-    -webkit-box-shadow: 0 8px 0 #393a39;
-    -moz-box-shadow: 0 8px 0 #393a39;
-    box-shadow: 0 8px 0 #393a39;
-    
-    text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
-    
+.Button:active {
+    vertical-align: top;
+    padding-top: 8px;
 }
 
-/*Step 3: Link Styles*/
-a.button2 {
-    text-decoration: none;
-}
-
-/*Step 5: Hover Styles*/
-a.button2:active {
-    background: #3d7a80;
-    background: -webkit-linear-gradient(top, #eeeeee, #676666);
-    background: -moz-linear-gradient(top, #eeeeee, #676666);
-    background: -o-linear-gradient(top, #eeeeee, #676666);
-    background: -ms-linear-gradient(top, #eeeeee, #676666);
-    background: linear-gradient(top, #eeeeee, #676666);
-}
 
 /* @end */
 
 .clearFloat { clear: both; }
 
-#aligned {
-    float:left;
-    width = 90px;
+.aligned {
+    position:relative;
+    display:inline-block;
+    padding: 0px 20px; 
 }
 
 #clear {clear: both;}
+
+#exclamButton {
+    height: 125px;
+    width: 125px;
+    background-image: url(resources/surprise.png);
+}
+
+#questButton {
+    height: 125px;
+    width: 125px;
+    background-image: url(resources/confuse.png);    
+}
+
+#sadButton {
+    height: 125px;
+    width: 125px;
+    background-image: url(resources/sadicon.png);
+}
+
+#happyButton {
+    height: 125px;
+    width: 125px;
+    background-image: url(resources/happyicon.png);
+}

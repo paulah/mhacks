@@ -190,7 +190,7 @@ $(function() {
 		    chart.series[3].data[0].update(surpirseCount);
 
 		}
-    }, 5000);
+    }, 500);
 
     /*function getTodoItemId(formElement) {
         return $(formElement).closest('li').attr('data-todoitem-id');

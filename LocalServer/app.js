@@ -117,7 +117,7 @@ $(function() {
 
 
     $('#container').highcharts({
-        colors: ['#ff2500', '#115eb7', '#666666', '#01f61e'],
+        colors: ['#01f61e', '#9B30FF', '#115eb7','#ffa500' ],
 
         chart: {
             type: 'column'
@@ -142,7 +142,8 @@ $(function() {
                 '<td style="padding:0"><b>{point.y:.1f} clicks</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
-            useHTML: true
+            useHTML: true,
+            borderColor: '#666666',
         },
         plotOptions: {
             column: {
@@ -151,20 +152,20 @@ $(function() {
             }
         },
         series: [{
+        	name: '!',
+            data: [surpirseCount]
+            
+
+        }, {
+        	name: '?',
+            data: [questionCount]
+        }, {
+            
+        	name: ':(',
+            data: [dislikeCount]
+        }, {
             name: ':)',
             data: [likeCount]
-
-        }, {
-            name: ':(',
-            data: [dislikeCount]
-
-        }, {
-            name: '?',
-            data: [questionCount]
-
-        }, {
-            name: '!',
-            data: [surpirseCount]
 
         }]
     });
@@ -184,10 +185,10 @@ $(function() {
 		    var questionCount = callMap['question'];
 		    var surpirseCount = callMap['exclamation'];
 
-		    chart.series[0].data[0].update(likeCount);
-		    chart.series[1].data[0].update(dislikeCount);
-		    chart.series[2].data[0].update(questionCount);
-		    chart.series[3].data[0].update(surpirseCount);
+		    chart.series[3].data[0].update(likeCount);
+		    chart.series[2].data[0].update(dislikeCount);
+		    chart.series[1].data[0].update(questionCount);
+		    chart.series[0].data[0].update(surpirseCount);
 
 		}
     }, 500);

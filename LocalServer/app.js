@@ -1,7 +1,7 @@
 ﻿/**** our stuff ****/
 function buttonPressed(emotion) {
 	var timestamp = truncate($('#video_container').find('video').get(0).currentTime);
-	alert(emotion + ' ' + timestamp);
+	//alert(emotion + ' ' + timestamp);
 	var MobileServiceClient = WindowsAzure.MobileServiceClient,
 		client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
         todoItemTable = client.getTable('TimestampTable');

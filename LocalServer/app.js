@@ -53,23 +53,35 @@ $(function() {
 
     //// TODO: Uncomment the following method. 
     
-    	var arr = [];
-		var query = todoItemTable;
-		
-		query.take(500).read().then(function(todoItems) {
-			
-			listItems = $.map(todoItems, function(item) {
-				arr.push([item.time, item.emotion, item.number]);
-				return arr;
-			});
-			arr = listItems;
-		});
-
-		function refreshTodoItems() {
-		}
+	var arr = [];
+	var query = todoItemTable;
 	
- 
+	query.take(500).read().then(function(todoItems) {
+		
+		listItems = $.map(todoItems, function(item) {
+			arr.push([item.time, item.emotion, item.number]);
+			return arr;
+		});
+        console.log(arr);
+		//arr = listItems;
+        
+	});
 
+    //Outputting CSV file
+    var csvContent = "data:test/csv;charset=utf-8,";
+    arr.forEach(function(infoArray, index){
+        dataString = infoArray.join(",");
+        csvContent += index < infoArray.length ? dataString+ "\n" : dataString;
+    });
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href",encodedUri);
+    link.setAttribute("download", "Data.csv");
+    link.click();
+
+	function refreshTodoItems() {
+	}
+	
 	function getGraphStats() {
 		//var currentTime = truncate($('#video_container').find('video').get(0).currentTime);
 		var currentTime = getTimeStamp();

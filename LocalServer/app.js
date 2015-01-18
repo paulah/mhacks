@@ -156,6 +156,8 @@ $(function() {
 
 
 	setInterval(function () {
+		var videoElement = $('#video_container').find('video').get(0);
+		if (!videoElement.paused) {
         var callMap = getGraphStats();
         var likeCount = callMap['happy'];
         var dislikeCount = callMap['sad'];
@@ -215,7 +217,10 @@ $(function() {
                 data: [surpirseCount]
 
             }]
+        
         });
+
+		}
     }, 1000);
 
     /*function getTodoItemId(formElement) {

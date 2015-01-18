@@ -175,66 +175,19 @@ $(function() {
 	setInterval(function () {
 		var videoElement = $('#video_container').find('video').get(0);
 		if (!videoElement.paused) {
-        var callMap = getGraphStats();
-        var likeCount = callMap['happy'];
-        var dislikeCount = callMap['sad'];
-        var questionCount = callMap['question'];
-        var surpirseCount = callMap['exclamation'];
+			var chart=$("#container").highcharts();
+			 
+			var callMap = getGraphStats();
 
+		    var likeCount = callMap['happy'];
+		    var dislikeCount = callMap['sad'];
+		    var questionCount = callMap['question'];
+		    var surpirseCount = callMap['exclamation'];
 
-        $('#container').highcharts({
-            colors: ['#ff2500', '#115eb7', '#666666', '#01f61e'],
-
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'graph'
-            },
-            xAxis: {
-                categories: [
-                    'current second',
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Clicks'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} clicks</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: ':)',
-                data: [likeCount]
-
-            }, {
-                name: ':(',
-                data: [dislikeCount]
-
-            }, {
-                name: '?',
-                data: [questionCount]
-
-            }, {
-                name: '!',
-                data: [surpirseCount]
-
-            }]
-        
-        });
+		    chart.series[0].data[0].update(likeCount);
+		    chart.series[1].data[0].update(dislikeCount);
+		    chart.series[2].data[0].update(questionCount);
+		    chart.series[3].data[0].update(surpirseCount);
 
 		}
     }, 5000);

@@ -5,8 +5,26 @@ function buttonPressed(emotion) {
 	var MobileServiceClient = WindowsAzure.MobileServiceClient,
 		client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
         todoItemTable = client.getTable('TimestampTable');
-        
-	todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}).then(refreshTodoItems); 
+    
+    /* check if the number needs to be incremented */
+    var need_to_insert = true;
+    var b_arr = [];
+    var query = todoItemTable.where({time: timestamp, emotion: emotion}).read().then(function(todoItems) {
+			listItems = $.map(todoItems, function(item) {
+				console.log('same time item');
+				var newValue = item.number + 1;
+				todoItemTable.update({ id: item.id, emotion: emotion, number: newValue });
+				b_arr.push(item);
+				console.log(item + ' pushed');
+				return b_arr;
+			});
+    });
+
+	function refreshTodoItems() {
+	}
+
+    if(b_arr.length == 0)
+		todoItemTable.insert({ time: timestamp, emotion: emotion, number: 1}).then(refreshTodoItems); 
 }
 
 
@@ -46,7 +64,6 @@ $(function() {
 
 	function getGraphStats() {
 		//var currentTime = truncate($('#video_container').find('video').get(0).currentTime);
-		alert(arr);
 		var currentTime = 5;
 		var arrayLength = arr.length;
 		var map = {};
@@ -140,8 +157,8 @@ $(function() {
 
 	setTimeout(function () {
         var my_map = getGraphStats();
-        alert(my_map['exclamation'] + ' should be 1');
     }, 5000);
+
     /*function getTodoItemId(formElement) {
         return $(formElement).closest('li').attr('data-todoitem-id');
     }*/

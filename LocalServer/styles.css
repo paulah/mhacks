@@ -31,13 +31,11 @@
 
 /*Step 5: Hover Styles*/
 .Button:hover {
-    vertical-align: top;
-    padding-top: 1px;
+    transform: translateY(1px);
 }
 
 .Button:active {
-    vertical-align: top;
-    padding-top: 8px;
+    transform: translateY(3px);
 }
 
 
@@ -57,6 +55,11 @@
     height: 125px;
     width: 125px;
     background-image: url(resources/surprise.png);
+}
+
+#exclamButton:hover {
+    vertical-align: top;
+    padding-top: 8px;
 }
 
 #questButton {

@@ -123,7 +123,7 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'graph'
+            text: 'feelings'
         },
         xAxis: {
             categories: [

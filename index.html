@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Arph</title>
+    <link href = "css/bootstrap.min.css" rel = "stylesheet">
+    <link href = "styles.css" rel = "stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-static-top navbar-inverse" style="margin-bottom: 0px">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Arph</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="firechatpage.html">Forum</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="javascript:void(0)" onclick="dlButtonPressed()">Download data</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="app.js"></script>
+
+<script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.0.4/themes/dark-unica.js'></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<center>
+<div style="width:100%; background-color: #000; padding: 20px 5px">
+<div id="video_container">
+    <video poster="cover.png" preload="none" controls="" id="video" tabindex="0">
+      <source type="video/mp4" src="Oktapodi_Oscar_2009_Animated_Short_Film.mp4" id="mp4"></source>
+      <source type="video/webm" src="http://techslides.com/demos/sample-videos/small.webm" id="webm"></source>
+      <source type="video/ogg" src="http://techslides.com/demos/sample-videos/small.ogv" id="ogv"></source>
+      <p>Your user agent does not support the HTML5 Video element.</p>
+    </video>
+</div>
+
+<br>
+<center>
+<div class = "aligned">
+  <a href="javascript:void(0)" class = "Button" id = "exclamButton" onclick="buttonPressed('exclamation')"></a> <!--<img src="resources/surprise.png"/></a> -->
+</div>
+<div class = "aligned">
+  <a href="javascript:void(0)" class = "Button" id = "questButton" onclick="buttonPressed('question')"> </a> <!--<img src="resources/confuse.png"/></a> -->
+</div>
+<div class = "aligned">
+  <a href="javascript:void(0)" class = "Button" id = "sadButton" onclick="buttonPressed('sad')"> </a> <!--<img src="resources/sadicon.png"/></a> -->
+</div>
+<div class = "aligned">
+  <a href="javascript:void(0)" class = "Button" id = "happyButton" onclick="buttonPressed('happy')"> </a> <!-- <img src="resources/happyicon.png"/></a> -->
+</div>
+</center>
+<br class = "clearFloat">
+</div>
+</center>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<div id = "clear"> </div>
+
+
+
+<div id='todo-items'></div>
+
+
+</body>
+</html>

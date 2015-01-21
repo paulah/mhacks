@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Forum</title>
+    <link href = "css/bootstrap.min.css" rel = "stylesheet">
+    <link href = "styles.css" rel = "stylesheet">
+
+    <meta charset='utf-8' />
+
+    <!-- jQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+
+    <!-- Firebase -->
+    <script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
+
+    <!-- Firechat -->
+    <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
+    <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+  </head>
+
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+
+
+
+    <nav class="navbar navbar-static-top navbar-inverse" style="margin-bottom: 0px">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Arph</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">home</a></li>
+            <li class="active"><a href="#">Forum</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="javascript:void(0)" onclick="dlButtonPressed()">Download data</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="app.js"></script>
+
+    <script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.0.4/themes/dark-unica.js'></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+    <script>
+    // Create a new Firebase reference, and a new instance of the Login client
+    var chatRef = new Firebase('https://blinding-torch-2928.firebaseio.com/chat');
+
+    function login() {
+      chatRef.authAnonymously(function(error, authData) {
+        if (error) {
+          console.log("Login Failed!",error);
+        } else {
+          console.log("Authenticated successfully with payload:", authData);
+        }
+
+      }, {
+        remember: "sessionOnly"
+      });
+    }
+
+    chatRef.onAuth(function(authData) {
+      // Once authenticated, instantiate Firechat with our user id and user name
+      if (authData) {
+        initChat(authData);
+      }
+    });
+    </script>
+    <div style="width:100%; background-color: #000; padding: 20px 5px">
+
+    <a href='#' onclick='login();'>Login as Anon</a>
+
+    <script>
+    function initChat(authData) {
+      var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
+      chat.setUser(authData.uid, authData[authData.provider].displayName);
+    }
+    </script>
+
+    <div id='firechat-wrapper'></div>
+  </body>
+
+  <br>
+</html>

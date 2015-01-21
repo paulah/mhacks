@@ -30,7 +30,7 @@ function buttonPressed(emotion) {
 //Outputting CSV file
 function dlButtonPressed() {
     var MobileServiceClient = WindowsAzure.MobileServiceClient,
-        client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
+        client = new MobileServiceClient('https://cors.5apps.com/?uri=https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
         todoItemTable = client.getTable('TimestampTable');
 
     var arr = [];
@@ -77,7 +77,7 @@ $(function() {
     //// your mobile service, which are obtained from the Windows Azure Management Portal.
 	//// Do this after you add a reference to the Mobile Services client to your project.
     var MobileServiceClient = WindowsAzure.MobileServiceClient,
-		client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
+		client = new MobileServiceClient('https://cors.5apps.com/?uri=https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
         todoItemTable = client.getTable('TimestampTable');
 
     //// TODO: Uncomment the following method. 

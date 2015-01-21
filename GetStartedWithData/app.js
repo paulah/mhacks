@@ -5,7 +5,7 @@
     //// your mobile service, which are obtained from the Windows Azure Management Portal.
 	//// Do this after you add a reference to the Mobile Services client to your project.
     var MobileServiceClient = WindowsAzure.MobileServiceClient,
-		client = new MobileServiceClient('https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
+		client = new MobileServiceClient('https://cors.5apps.com/?uri=https://tutorialmhacks.azure-mobile.net/', 'jZAJirfKvRpQMCDqajiOKPWjxtsqzI47'),
         todoItemTable = client.getTable('todoitem');
 
 	// TODO: Comment-out the following lines of code used for in-memory data.
